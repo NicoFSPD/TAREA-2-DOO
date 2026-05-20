@@ -28,7 +28,30 @@ public class Departamento implements Invitable {
         }
     }
 
+    //--SETTERS Y GETTERS--
 
+    public String getNombre(){
+        return nombre;
+    }
 
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
 
+    public List<Empleado> getEmpleados(){
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados){
+        this.empleados = empleados;
+    }
+
+    @Override
+    public String toString(){
+        List<String> nombresEmpleados = new ArrayList<>();
+        for (Empleado emp : empleados){
+            nombresEmpleados.add(emp.getNombre() + " " + emp.getApellidos());
+        }
+        return "Departamento {" + nombre + "/" + " empleados" + nombresEmpleados + "}";
+    }
 }
