@@ -29,30 +29,71 @@ public abstract class Reunion {
         this.notas = new ArrayList<>();
     }
 
-    //metodos a rellenar
+    //metodos
     public List<Asistencia> obtenerAsistencias(){
-        return null;
+        return asistencias;
     }
-    public List<Invitable> obtenerAusencias(){
-        return null;
+    public List<Invitable> obtenerAusencias(){ //revisa que cada invitado no este en la lista de asistencia
+        List<Invitable> ausentes = new ArrayList<>();
+        for(int i = 0;i < invitaciones.size();i++){
+            Invitacion inv = invitaciones.get(i);
+            boolean asistio = false;
+            for (int j = 0;j < asistencias.size();j++){
+                Asistencia asis = asistencias.get(j);
+                if(inv.getInvitado().equals(asis.getParticipante())){
+                    asistio = true;
+                    break;
+                }
+            }
+            if (!asistio){
+                ausentes.add(inv.getInvitado());
+            }
+        }
+        return ausentes;
     }
-    public List<Retraso> obtenerRetrasos(){
-        return null;
+    public List<Retraso> obtenerRetrasos(){ //si las asistencias estan dentro de la clase Retraso se unen a esta lista
+        List<Retraso> retrasos = new ArrayList<>();
+        for (int i = 0;i < asistencias.size();i++){
+            Asistencia asis = asistencias.get(i);
+            if (asis instanceof Retraso){
+                retrasos.add((Retraso) asis);
+            }
+        }
+        return retrasos;
     }
+
     public int obtenerTotalAsistencia(){
-        return 0;
+        return asistencias.size();
     }
+
     public float obtenerPorcentajeAsistencia(){
-        return 0.0f;
+        if(invitaciones.isEmpty()){
+            return 0.0f;
+        }
+        return ((float)asistencias.size() / invitaciones.size()) * 100;
     }
+
     public float calcularTiempoReal(){
+        if(horaInicio != null && horaFin != null){
+            return Duration.between(horaInicio,horaFin).toMinutes();
+        }
         return 0.0f;
     }
-    public void agregarInvitacion(){}
-    public void agregarAsistencia(){}
-    public void agregarNota(){}
-    public void iniciar(){}
-    public void finalizar(){}
+    public void agregarInvitacion(Invitacion invitacion){
+        this.invitaciones.add(invitacion);
+    }
+    public void agregarAsistencia(Asistencia asistencia){
+        this.asistencias.add(asistencia);
+    }
+    public void agregarNota(Nota nota){
+        this.notas.add(nota);
+    }
+    public void iniciar(){
+        this.horaInicio = Instant.now();
+    }
+    public void finalizar(){
+        this.horaFin = Instant.now();
+    }
 
     //getters y setters
     public Date getFecha() {
