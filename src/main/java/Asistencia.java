@@ -7,7 +7,6 @@ public class Asistencia{
         this.participante = participante;
     }
 
-
     public Invitable getParticipante(){        //getter, AGREGADO EXTRA
         return participante;
     }
