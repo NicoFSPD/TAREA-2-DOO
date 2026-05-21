@@ -12,6 +12,9 @@ public class Main {
         Empleado nicolas = new Empleado("2", "Silva", "Nicolas", "nico@empresa.com", deptoFI);
         Empleado eduardo = new Empleado("3", "Riveros", "Eduardo", "edu@empresa.com", null); //Organizador
 
+        //Crear invitado externo
+        InvitadoExterno patricio = new InvitadoExterno("Patricio","Galvarino","pato@empresa.com");
+
         //Anadir empleados
         deptoFI.agregarEmpleado(daniel);
         deptoFI.agregarEmpleado(nicolas);
@@ -29,6 +32,7 @@ public class Main {
         System.out.println("ENVIANDO INVITACIONES... ");
         //Invitar
         reunion.agregarInvitacion(deptoFI, Instant.now());
+        reunion.agregarInvitacion(patricio, Instant.now());
 
         System.out.println("\n*** DESARROLLO DE LA REUNION ***");
         //Iniciar la reunion
@@ -42,10 +46,14 @@ public class Main {
         Retraso retrasoNicolas = new Retraso(nicolas, Instant.now());
         reunion.agregarAsistencia(retrasoNicolas);
 
+        //Patricio llego a la hora
+        Asistencia asistenciaPatricio = new Asistencia(patricio);
+        reunion.agregarAsistencia(asistenciaPatricio);
+
         //Eduardo (el organizador) nunca registro su asistencia en este ejemplo, asi que el sistema lo contara como ausente si lo hubieramos invitado
 
         //Agregar notas
-        Nota nota1 = new Nota(asistenciaDaniel, Instant.now(), "Daniel hace un commit en el archivo.");
+        Nota nota1 = new Nota(asistenciaPatricio, Instant.now(), asistenciaPatricio.getParticipante().getNombre() + " hace un commit en el archivo.");
         reunion.agregarNota(nota1);
 
         //Finalizar reunion

@@ -1,13 +1,13 @@
 public class InvitadoExterno implements Invitable {
 
     private String nombre;
-    private String apellidos;
+    private String apellido;
     private String correo;
 
-    public InvitadoExterno(String apellidos, String nombre, String correo){
-        this.apellidos = apellidos;
+    public InvitadoExterno(String nombre, String apellido, String correo){
         this.nombre = nombre;
         this.correo = correo;
+        this.apellido = apellido;
     }
 
     @Override
@@ -15,12 +15,12 @@ public class InvitadoExterno implements Invitable {
         System.out.println("Invitacion enviada a " + correo);
     }
 
-    public String getApellidos(){
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos){
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNombre(){
@@ -41,6 +41,6 @@ public class InvitadoExterno implements Invitable {
 
     @Override
     public String toString(){
-        return "InvitadoExterno {" + "nombre completo= " + nombre + " " + apellidos + "/" + "correo= " + correo + "}";
+        return "InvitadoExterno {" + "nombre completo= " + nombre + apellido + "/" + "correo= " + correo + "}";
     }
 }
