@@ -1,4 +1,6 @@
-
+/**Enumeración para registrar los tópicos de una reunión
+ * @author Nicolás Silva
+ * @version 1.0 - 20 de mayo de 2026*/
 public enum tipoReunion {
     TECNICA,
     MARKETING,
