@@ -26,7 +26,7 @@ public class Empleado implements Invitable{
         return id;
     }
 
-    public void setId(){
+    public void setId(String id){
         this.id = id;
     }
 
@@ -42,7 +42,7 @@ public class Empleado implements Invitable{
         return nombre;
     }
 
-    public void setNombre(){
+    public void setNombre(String apellidos){
         this.nombre = nombre;
     }
 
