@@ -30,15 +30,12 @@ public abstract class Reunion {
     }
 
     //metodos
-    public List<Asistencia> obtenerAsistencias(){
-        return asistencias;
-    }
-    public List<Invitable> obtenerAusencias(){ //revisa que cada invitado no este en la lista de asistencia
+    public List<Invitable> obtenerAusencias(){
         List<Invitable> ausentes = new ArrayList<>();
-        for(int i = 0;i < invitaciones.size();i++){
+        for(int i = 0; i < invitaciones.size(); i++){
             Invitacion inv = invitaciones.get(i);
             boolean asistio = false;
-            for (int j = 0;j < asistencias.size();j++){
+            for (int j = 0; j < asistencias.size(); j++){
                 Asistencia asis = asistencias.get(j);
                 if(inv.getInvitado().equals(asis.getParticipante())){
                     asistio = true;
@@ -75,12 +72,24 @@ public abstract class Reunion {
 
     public float calcularTiempoReal(){
         if(horaInicio != null && horaFin != null){
-            return Duration.between(horaInicio,horaFin).toMinutes();
+            return (float) Duration.between(horaInicio,horaFin).toMinutes();
         }
         return 0.0f;
     }
-    public void agregarInvitacion(Invitacion invitacion){
-        this.invitaciones.add(invitacion);
+    //METODO MODIFICADO: AHORA GESTIONA LOGICA DE DEPARTAMENTOS Y EMPLEADOS
+    public void agregarInvitacion(Invitable participante, Instant hora){
+        if (participante instanceof Departamento) {
+            Departamento depto = (Departamento) participante;
+            for (Empleado emp : depto.getEmpleados()) {
+                Invitacion nuevaInvitacion = new Invitacion(hora, emp);
+                this.invitaciones.add(nuevaInvitacion);
+                emp.invitar();
+            }
+        } else if (participante instanceof Empleado) {
+            Invitacion nuevaInvitacion = new Invitacion(hora, participante);
+            this.invitaciones.add(nuevaInvitacion);
+            participante.invitar();
+        }
     }
     public void agregarAsistencia(Asistencia asistencia){
         this.asistencias.add(asistencia);
@@ -151,6 +160,6 @@ public abstract class Reunion {
     //metodo toString con texto incluido
     @Override
     public String toString() {
-        return "Reunion programada el " + fecha + " organizada por " + organizador.getNombreCompleto();
+        return "Reunion programada el " + fecha + " organizada por " + organizador.getNombre() + " " + organizador.getApellidos();
     }
 }
