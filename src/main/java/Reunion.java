@@ -25,7 +25,7 @@ public abstract class Reunion implements Serializable {
                    Duration duracionPrevista,
                    Empleado organizador,
                    tipoReunion tipo
-                   ) {
+    ) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
@@ -176,6 +176,8 @@ public abstract class Reunion implements Serializable {
         this.notas = notas;
     }
 
+    /**Funcion que despliega un listado de los nombres de cada uno de los participantes de la reunión
+     * @return Los nombres de todas las personas que asistieron*/
     public String TotaldeParticipantes(){
         String Total = "\t";
         for(Asistencia a : getAsistencias()){
@@ -184,15 +186,24 @@ public abstract class Reunion implements Serializable {
         return Total;
     }
 
+    /**Funcion similar a la de participantes, con enfoque en especificar los atrasos
+     * @return Los nombres de todas las personas que asistieron con retraso*/
     public String TotaldeRetrasos(){
         String Total = "\t";
+
+        if(obtenerRetrasos().isEmpty()){
+            Total += "No hubieron";
+            return Total;
+        }
+        //CICLO QUE, DE HABER ATRASADOS, LOS VISITARÁ
         for(Retraso r : obtenerRetrasos()){
             Total += "- "+r.getParticipante().getNombre()+" "+r.getParticipante().getApellidos()+"\n\t";
         }
         return Total;
     }
 
-    //metodo toString con texto incluido
+    /**Funcion toString que entrega parte de la información relevante sobre la reunion
+     * @return Cada uno de los datos que luego serán necesarios para el armado del informe .txt*/
     @Override
     public String toString() {
         return "\n\nReunion programada el " + fecha
@@ -205,11 +216,14 @@ public abstract class Reunion implements Serializable {
                 + "\nModalidad: ";
     }
 
+    /**Funcion que entrega en un String, el listado de todas las notas hechas, en orden cronológico
+     * @return Un mensaje en caso de no haber notas; la lista en caso contrario*/
     public String listadoNotas(){
         String listado = "\n-------------NOTAS-------------\n\n";
         if(notas.isEmpty()){
             return "\nNo hay notas que mostrar\n\n";
         }else{
+            //CICLO PARA VISITAR CADA NOTA
             for(Nota n : notas){
                 listado += "Autor: "
                         + n.getAutor().getParticipante().getNombre().toString()
@@ -221,11 +235,16 @@ public abstract class Reunion implements Serializable {
             return listado;
         }
     }
-
+    /**Funcion para generar un registro que contiene toda la información sobre la propia reunion.
+     * Cosas tales como quien la organizó, fecha y hora en que se inició/termino, participantes, etc.
+     *
+     * @throws IOException en caso de haber un problema en lo que es el stream a tratar */
     public void generarInforme() throws IOException{
-        FileOutputStream archivo = new FileOutputStream("Informe.txt");
+        FileOutputStream archivo = new FileOutputStream("InformedeReunion.txt");
         ObjectOutputStream informe = new ObjectOutputStream(archivo);
+
         informe.write((toString()+listadoNotas().toString()).getBytes());
+
         informe.close();
         archivo.close();
     }
