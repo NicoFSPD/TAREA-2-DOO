@@ -1,19 +1,9 @@
-
+/**Enumeración para registrar los tópicos de una reunión
+ * @author Nicolás Silva
+ * @version 1.0 - 20 de mayo de 2026*/
 public enum tipoReunion {
-
-    TECNICA("Tecnica"),
-    MARKETING("Marketing"),
-    OTRO("Otro");
-
-
-    private final String tipo;
-
-
-    tipoReunion(String tipo){
-        this.tipo = tipo;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
+    TECNICA,
+    MARKETING,
+    OTRO;
+    //Para luego, al momento de desplegar el tipo de reunión, de necesitarse el texto como tál, se usa método desplegador
 }
