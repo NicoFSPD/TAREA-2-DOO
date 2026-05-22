@@ -88,7 +88,7 @@ public class Empleado implements Invitable{
      * Coloca/modifica el nombre a un empleado.
      * @param nombre nombre a asignar.
      */
-    public void setNombre(String apellidos){
+    public void setNombre(String nombre){
         this.nombre = nombre;
     }
 
@@ -109,14 +109,14 @@ public class Empleado implements Invitable{
 
     /**
      * Recibe el Departamento al que pertenece del empleado.
-     * @return String del departamento al que pertenece el empleado.
+     * @return Departamento al que pertenece el empleado.
      */
     public Departamento getDepartamento(){
         return departamento;
     }
 
     /**
-     * Coloca/modifica el correo de un  empleado.
+     * Coloca/modifica el departamento de un  empleado.
      * @param departamento Departamento a asignar.
      */
     public void setDepartamento(Departamento departamento){
@@ -135,7 +135,7 @@ public class Empleado implements Invitable{
      */
     @Override
     public String toString(){
-        return "Empleado {" + "id= " + id + "/" + " nombre completo= " + nombre + " " + apellidos + "/" + "correo= " + correo + "/" + "departamento" +
+        return "Empleado {" + "id= " + id + "/ " + " nombre completo= " + nombre + " " + apellidos + "/ " + "correo= " + correo + "/ " + "departamento" +
                 (departamento!= null ? departamento.getNombre() : "ninguno");
     }
 

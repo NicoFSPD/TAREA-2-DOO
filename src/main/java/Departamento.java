@@ -9,7 +9,7 @@ import java.util.List;
  * de un departamento de forma masivas, propagando la invitación
  * automáticamente a cada uno de los trabajadores registrados.
  * </p>
- * * @author Eduardo Riveros Medina
+ * @author Eduardo Riveros Medina
  * @version 1.0
  */
 public class Departamento implements Invitable {
@@ -23,7 +23,7 @@ public class Departamento implements Invitable {
     /**
      * Constructor que inicializa el departamento con su nombre
      * y genera una estructura vacía para su lista de empleados.
-     * * @param nombre El nombre que se le asignará al departamento en cuestion.
+     * @param nombre El nombre que se le asignará al departamento en cuestion.
      */
     public Departamento(String nombre){
         this.nombre= nombre;
@@ -36,7 +36,7 @@ public class Departamento implements Invitable {
      * meetodo que asegura que el objeto no sea nulo y que no se encuentre
      * ya registrado previamente dentro de la lista para evitar empleados duplicados.
      * </p>
-     * * @param empleado Objeto "Empleado" que se desea integrar al departamento en cuestion.
+     * @param empleado Objeto "Empleado" que se desea integrar al departamento en cuestion.
      */
     public void agregarEmpleado(Empleado empleado){
         if (empleado != null && !empleados.contains(empleado)){
@@ -46,8 +46,8 @@ public class Departamento implements Invitable {
 
     /**
      * Calcula y devuelve el número total de trabajadores que pertenecen actualmente
-     * al departamento con la libreria de strings.
-     * * @return Cantidad de empleados en la lista.
+     * al departamento usando el tamaño de la lista.
+     * @return Cantidad de empleados en la lista.
      */
     public int obtenerCantidadEmpleados(){
         return empleados.size();
@@ -73,7 +73,7 @@ public class Departamento implements Invitable {
 
     /**
      * Recibe el nombre del departamento.
-     * * @return String con el nombre actual.
+     * @return String con el nombre actual.
      */
     public String getNombre(){
         return nombre;
@@ -81,7 +81,7 @@ public class Departamento implements Invitable {
 
     /**
      * Coloca/Modifica el nombre del departamento.
-     * * @param nombre Nombre a establecer para el departamento.
+     * @param nombre Nombre a establecer para el departamento.
      */
     public void setNombre(String nombre){
         this.nombre = nombre;
@@ -89,7 +89,7 @@ public class Departamento implements Invitable {
 
     /**
      * Recibe la lista completa de empleados vinculados al departamento.
-     * * @return Una lista con los empleado.
+     * @return Una lista con los empleado.
      */
     public List<Empleado> getEmpleados(){
         return empleados;
@@ -97,7 +97,7 @@ public class Departamento implements Invitable {
 
     /**
      * Coloca/Modifica una nueva lista completa de empleados al departamento.
-     * * @param empleados Lista de empleados del departamento.
+     * @param empleados Lista de empleados del departamento.
      */
     public void setEmpleados(List<Empleado> empleados){
         this.empleados = empleados;
@@ -110,7 +110,7 @@ public class Departamento implements Invitable {
      * de "Empleado", el método solo llama el nombre y apellido
      * combinados de cada empleado y los concatena junto al nombre del departamento.
      * </p>
-     * * @return Representación formateada con los datos del departamento.
+     * @return Representación formateada con los datos del departamento.
      */
     @Override
     public String toString(){
