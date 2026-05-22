@@ -207,15 +207,19 @@ public abstract class Reunion implements Serializable {
 
     public String listadoNotas(){
         String listado = "\n-------------NOTAS-------------\n\n";
-        for(Nota n : notas){
-            listado += "Autor: "
-                    + n.getAutor().getParticipante().getNombre().toString()
-                    + " " + n.getAutor().getParticipante().getApellidos() +  "\n"
-                    + "Fecha de publicación: " + n.getHora().toString() + "\n\n"
-                    + "\t" + n.getContenido().toString()
-                    + "\n\n######################################################\n\n\n";
+        if(notas.isEmpty()){
+            return "\nNo hay notas que mostrar\n\n";
+        }else{
+            for(Nota n : notas){
+                listado += "Autor: "
+                        + n.getAutor().getParticipante().getNombre().toString()
+                        + " " + n.getAutor().getParticipante().getApellidos() +  "\n"
+                        + "Fecha de publicación: " + n.getHora().toString() + "\n\n"
+                        + "\t" + n.getContenido().toString()
+                        + "\n\n######################################################\n\n\n";
+            }
+            return listado;
         }
-        return listado;
     }
 
     public void generarInforme() throws IOException{
