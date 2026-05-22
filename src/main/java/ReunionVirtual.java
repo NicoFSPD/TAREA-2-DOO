@@ -22,7 +22,7 @@ public class ReunionVirtual extends Reunion{
     //descripcion de la reunion
     @Override
     public String toString(){
-        return super.toString() + "; virtual; enlace: " + enlace;
+        return super.toString() + "Virtual\nEnlace: " + enlace + "\n";
     }
 }
 

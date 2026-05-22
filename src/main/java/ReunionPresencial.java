@@ -22,6 +22,6 @@ public class ReunionPresencial extends Reunion{
     //descripcion de la reunion
     @Override
     public String toString(){
-        return super.toString() + "; presencial; Sala: " + sala;
+        return super.toString() + "presencial\nSala: " + sala + "\n";
     }
 }
