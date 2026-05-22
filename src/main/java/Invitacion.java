@@ -5,7 +5,7 @@ import java.time.Instant;
  * @version 1.0, 20 de mayo de 2026
  * */
 public class Invitacion {
-    //Implementación interpretada, adicional a lo ya entregado en el UML
+
     private Instant hora;
     private Invitable invitado;
     /**Constructor de la clase
@@ -15,14 +15,16 @@ public class Invitacion {
         this.hora = hora;
         this.invitado = invitado;
     }
-    //Getter y Setter para la hora
+    //GETTER/SETTER PARA LA HORA
+
     public Instant getHora() {
         return hora;
     }
     public void setHora(Instant hora) {
         this.hora = hora;
     }
-    //Getter y Setter para el Invitado
+
+    //GETTER/SETTER DE INVITADO
     public Invitable getInvitado() {
         return invitado;
     }
