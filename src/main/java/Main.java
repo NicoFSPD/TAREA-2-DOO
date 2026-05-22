@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //Crear entorno (departamento y empleados)
         Departamento deptoFI = new Departamento("FI");
@@ -53,19 +54,17 @@ public class Main {
         //Eduardo (el organizador) nunca registro su asistencia en este ejemplo, asi que el sistema lo contara como ausente si lo hubieramos invitado
 
         //Agregar notas
-        Nota nota1 = new Nota(asistenciaPatricio, Instant.now(), asistenciaPatricio.getParticipante().getNombre() + " hace un commit en el archivo.");
+        Nota nota1 = new Nota(asistenciaPatricio,
+                Instant.now(),
+                asistenciaPatricio.getParticipante().getNombre() + " hace un commit en el archivo.");
         reunion.agregarNota(nota1);
+
+        Nota nota2 = new Nota(retrasoNicolas, Instant.now(), retrasoNicolas.getParticipante().getNombre() + " hace una aseveración respecto del proyecto");
+        reunion.agregarNota(nota2);
 
         //Finalizar reunion
         reunion.finalizar();
 
-        System.out.println("\n*** REPORTE FINAL ***");
-        System.out.println(reunion.toString());
-        System.out.println("Total Asistencia: " + reunion.obtenerTotalAsistencia() + " personas");
-        System.out.println("Porcentaje Asistencia: " + reunion.obtenerPorcentajeAsistencia() + "%");
-        System.out.println("Cantidad de Retrasos: " + reunion.obtenerRetrasos().size());
-        System.out.println("Cantidad de Ausencias: " + reunion.obtenerAusencias().size());
-        System.out.println("\nNOTAS:");
         if(reunion.getNotas().isEmpty()){
             System.out.println("No hay notas registradas.");
         }else{
@@ -76,5 +75,7 @@ public class Main {
             }
         }
         System.out.println("Tiempo real de la reunion: " + reunion.calcularTiempoReal() + " minutos");
+
+        reunion.generarInforme();
     }
 }
