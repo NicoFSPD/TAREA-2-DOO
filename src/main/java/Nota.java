@@ -1,8 +1,3 @@
-/**Implementación de la Nota
- *@author Nicolás Silva
- *@version 1.0, 21 de Mayo de 2026
- **/
-
 import java.time.Instant;
 /**Implementación de la Nota
  *@author Nicolás Silva
