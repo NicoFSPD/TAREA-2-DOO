@@ -1,11 +1,12 @@
+import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-    //atributos
-public abstract class Reunion {
+//atributos
+public abstract class Reunion implements Serializable {
     private Date fecha;
     private Instant horaPrevista;
     private Duration duracionPrevista;
@@ -111,48 +112,60 @@ public abstract class Reunion {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
     public Instant getHoraPrevista() {
         return horaPrevista;
     }
     public void setHoraPrevista(Instant horaPrevista) {
         this.horaPrevista = horaPrevista;
     }
+
     public Duration getDuracionPrevista() {
         return duracionPrevista;
     }
     public void setDuracionPrevista(Duration duracionPrevista) {
         this.duracionPrevista = duracionPrevista;
     }
+
     public Instant getHoraInicio() {
         return horaInicio;
     }
     public Instant getHoraFin() {
         return horaFin;
     }
+
     public Empleado getOrganizador() {
         return organizador;
     }
     public void setOrganizador(Empleado organizador) {
         this.organizador = organizador;
     }
+
     public tipoReunion getTipo() {
         return tipo;
     }
     public void setTipo(tipoReunion tipo) {
         this.tipo = tipo;
     }
+
     public List<Invitacion> getInvitaciones() {
         return invitaciones;
     }
     public void setInvitaciones(List<Invitacion> invitaciones) {
         this.invitaciones = invitaciones;
     }
+
     public void setAsistencias(List<Asistencia> asistencias) {
         this.asistencias = asistencias;
     }
+    public List<Asistencia> getAsistencias() {
+        return asistencias;
+    }
+
     public List<Nota> getNotas() {
         return notas;
     }
+
     public void setNotas(List<Nota> notas) {
         this.notas = notas;
     }
@@ -176,6 +189,33 @@ public abstract class Reunion {
     //metodo toString con texto incluido
     @Override
     public String toString() {
-        return "Reunion programada el " + fecha + " organizada por " + organizador.getNombre() + " " + organizador.getApellidos();
+        return "Reunion programada el " + fecha
+                + "\nDuracion total: " + Duration.between(getHoraInicio(),getHoraFin()).toString()
+                + "\nOrganizador: " + organizador.getNombre() + " " + organizador.getApellidos()
+                + "\nParticipantes:\n" + TotaldeParticipantes()
+                + "\nRetrasos:\n" + TotaldeRetrasos()
+                + "\nModalidad: ";
+    }
+
+    public String listadoNotas(){
+        String listado = "\n-------------NOTAS-------------\n\n";
+        for(int i = notas.size()-1; i >= 0; i--){
+            Nota n = notas.get(i);
+            listado += "Autor: "
+                    + n.getAutor().getParticipante().getNombre().toString()
+                    + " " +  "\n"
+                    + "Fecha de publicación: " + n.getHora().toString() + "\n\n"
+                    + "\t" + n.getContenido().toString()
+                    + "\n\n######################################################\n\n";
+        }
+        return listado;
+    }
+
+    public void generarInforme() throws IOException, FileNotFoundException {
+        FileOutputStream archivo = new FileOutputStream("Informe.txt");
+        ObjectOutputStream informe = new ObjectOutputStream(archivo);
+        informe.write((toString()+listadoNotas().toString()).getBytes());
+        informe.close();
+        archivo.close();
     }
 }
