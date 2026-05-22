@@ -157,6 +157,22 @@ public abstract class Reunion {
         this.notas = notas;
     }
 
+    public String TotaldeParticipantes(){
+        String Total = "\t";
+        for(Asistencia a : getAsistencias()){
+            Total += "- "+a.getParticipante().getNombre().toString()+" "+ "(Apellido)" +"\n\t";
+        }
+        return Total;
+    }
+
+    public String TotaldeRetrasos(){
+        String Total = "\t";
+        for(Retraso r : obtenerRetrasos()){
+            Total += "- "+r.getParticipante().getNombre().toString()+" "+ "(Apellido)" +"\n\t";
+        }
+        return Total;
+    }
+
     //metodo toString con texto incluido
     @Override
     public String toString() {
