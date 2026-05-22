@@ -79,6 +79,11 @@ public class Departamento implements Invitable {
         return nombre;
     }
 
+    @Override
+    public String getApellidos() {
+        return "";
+    }
+
     /**
      * Coloca/Modifica el nombre del departamento.
      * @param nombre Nombre a establecer para el departamento.
