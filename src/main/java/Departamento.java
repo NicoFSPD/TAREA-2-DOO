@@ -34,6 +34,11 @@ public class Departamento implements Invitable {
         return nombre;
     }
 
+    @Override
+    public String getApellidos() {
+        return "";
+    }
+
     public void setNombre(String nombre){
         this.nombre = nombre;
     }

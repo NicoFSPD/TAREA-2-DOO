@@ -1,6 +1,7 @@
 import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,8 +11,8 @@ public abstract class Reunion implements Serializable {
     private Date fecha;
     private Instant horaPrevista;
     private Duration duracionPrevista;
-    private Instant horaInicio;
-    private Instant horaFin;
+    private Instant fechaInicio;
+    private Instant fechaFin;
     private Empleado organizador;
     private tipoReunion tipo;
     private List<Invitacion> invitaciones;
@@ -19,7 +20,12 @@ public abstract class Reunion implements Serializable {
     private List<Nota> notas;
 
     //clase constructora
-    public Reunion(Date fecha,Instant horaPrevista,Duration duracionPrevista,Empleado organizador,tipoReunion tipo) {
+    public Reunion(Date fecha,
+                   Instant horaPrevista,
+                   Duration duracionPrevista,
+                   Empleado organizador,
+                   tipoReunion tipo
+                   ) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
@@ -72,8 +78,8 @@ public abstract class Reunion implements Serializable {
     }
 
     public float calcularTiempoReal(){
-        if(horaInicio != null && horaFin != null){
-            return (float) Duration.between(horaInicio,horaFin).toMinutes();
+        if(fechaInicio != null && fechaFin != null){
+            return (float) Duration.between(fechaInicio, fechaFin).toMinutes();
         }
         return 0.0f;
     }
@@ -99,10 +105,10 @@ public abstract class Reunion implements Serializable {
         this.notas.add(nota);
     }
     public void iniciar(){
-        this.horaInicio = Instant.now();
+        this.fechaInicio = Instant.now();
     }
     public void finalizar(){
-        this.horaFin = Instant.now();
+        this.fechaFin = Instant.now();
     }
 
     //getters y setters
@@ -127,11 +133,11 @@ public abstract class Reunion implements Serializable {
         this.duracionPrevista = duracionPrevista;
     }
 
-    public Instant getHoraInicio() {
-        return horaInicio;
+    public Instant getFechaInicio() {
+        return fechaInicio;
     }
-    public Instant getHoraFin() {
-        return horaFin;
+    public Instant getFechaFin() {
+        return fechaFin;
     }
 
     public Empleado getOrganizador() {
@@ -173,7 +179,7 @@ public abstract class Reunion implements Serializable {
     public String TotaldeParticipantes(){
         String Total = "\t";
         for(Asistencia a : getAsistencias()){
-            Total += "- "+a.getParticipante().getNombre().toString()+" "+ "(Apellido)" +"\n\t";
+            Total += "- "+a.getParticipante().getNombre().toString()+" "+ a.getParticipante().getApellidos().toString() +"\n\t";
         }
         return Total;
     }
@@ -181,7 +187,7 @@ public abstract class Reunion implements Serializable {
     public String TotaldeRetrasos(){
         String Total = "\t";
         for(Retraso r : obtenerRetrasos()){
-            Total += "- "+r.getParticipante().getNombre().toString()+" "+ "(Apellido)" +"\n\t";
+            Total += "- "+r.getParticipante().getNombre()+" "+r.getParticipante().getApellidos()+"\n\t";
         }
         return Total;
     }
@@ -189,8 +195,10 @@ public abstract class Reunion implements Serializable {
     //metodo toString con texto incluido
     @Override
     public String toString() {
-        return "Reunion programada el " + fecha
-                + "\nDuracion total: " + Duration.between(getHoraInicio(),getHoraFin()).toString()
+        return "\n\nReunion programada el " + fecha
+                + "\nHora inicio: " + getFechaInicio().atZone(ZoneId.systemDefault()).toLocalTime()
+                + "\nHora de termino: " + getFechaFin().atZone(ZoneId.systemDefault()).toLocalTime()
+                + "\nDuracion total: " + calcularTiempoReal()
                 + "\nOrganizador: " + organizador.getNombre() + " " + organizador.getApellidos()
                 + "\nParticipantes:\n" + TotaldeParticipantes()
                 + "\nRetrasos:\n" + TotaldeRetrasos()
@@ -199,19 +207,18 @@ public abstract class Reunion implements Serializable {
 
     public String listadoNotas(){
         String listado = "\n-------------NOTAS-------------\n\n";
-        for(int i = notas.size()-1; i >= 0; i--){
-            Nota n = notas.get(i);
+        for(Nota n : notas){
             listado += "Autor: "
                     + n.getAutor().getParticipante().getNombre().toString()
-                    + " " +  "\n"
+                    + " " + n.getAutor().getParticipante().getApellidos() +  "\n"
                     + "Fecha de publicación: " + n.getHora().toString() + "\n\n"
                     + "\t" + n.getContenido().toString()
-                    + "\n\n######################################################\n\n";
+                    + "\n\n######################################################\n\n\n";
         }
         return listado;
     }
 
-    public void generarInforme() throws IOException, FileNotFoundException {
+    public void generarInforme() throws IOException{
         FileOutputStream archivo = new FileOutputStream("Informe.txt");
         ObjectOutputStream informe = new ObjectOutputStream(archivo);
         informe.write((toString()+listadoNotas().toString()).getBytes());
