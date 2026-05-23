@@ -115,7 +115,7 @@ public abstract class Reunion implements Serializable {
     /**
      * Procesa y agrega una invitacion a la reunion. Si el participante es un
      * Departamento, itera e invita de manera automatica a todos los Empleados del mismo
-     * @param participante Entidad invitable (Empleado o Departamento)
+     * @param participante Entidad invitable (Empleado, Departamento o Invitado Externo)
      * @param hora Momento exacto en que se realiza o envia la invitacion
      */
     public void agregarInvitacion(Invitable participante, Instant hora){
@@ -126,7 +126,7 @@ public abstract class Reunion implements Serializable {
                 this.invitaciones.add(nuevaInvitacion);
                 emp.invitar();
             }
-        } else if (participante instanceof Empleado) {
+        } else if (participante != null) {
             Invitacion nuevaInvitacion = new Invitacion(hora, participante);
             this.invitaciones.add(nuevaInvitacion);
             participante.invitar();
