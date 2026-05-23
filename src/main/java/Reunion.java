@@ -11,7 +11,7 @@ import java.util.List;
  * @author Nicolas Silva
  * @version 1.0 - 22 de mayo de 2026
  */
-public abstract class Reunion implements Serializable {
+public abstract class Reunion{
     private Date fecha;
     private Instant horaPrevista;
     private Duration duracionPrevista;
