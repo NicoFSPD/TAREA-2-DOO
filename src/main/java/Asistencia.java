@@ -13,7 +13,7 @@ public class Asistencia{
     /**El participante asociado al registro de asistencia.
      * Mantenido bajo la abstracción de la interfaz Invitable (Extra en el UML).
      */
-    private Invitable participante;         //asosiacion dirigida hacia Empleado en el UML, AGREGADO EXTRA
+    private Invitable participante;
 
     /**
      * Constructor para inicializar el registro de asistencia con su participante.
@@ -56,7 +56,7 @@ public class Asistencia{
      * @return String con la informacion del registro.
      */
     @Override
-    public String toString() {      //toString que se pide por enunciado
+    public String toString() {
         return "Asistencia {" +
                 "participante=" + (participante != null ? participante.toString() : "null") +
                 '}';
