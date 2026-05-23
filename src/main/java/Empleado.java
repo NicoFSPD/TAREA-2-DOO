@@ -84,11 +84,6 @@ public class Empleado implements Invitable{
         return nombre;
     }
 
-    @Override
-    public String getApellido() {
-        return apellidos;
-    }
-
     /**
      * Coloca/modifica el nombre a un empleado.
      * @param nombre nombre a asignar.
