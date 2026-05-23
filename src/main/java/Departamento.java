@@ -121,7 +121,7 @@ public class Departamento implements Invitable {
     public String toString(){
         List<String> nombresEmpleados = new ArrayList<>();
         for (Empleado emp : empleados){
-            nombresEmpleados.add(emp.getNombre() + " " + emp.getApellidos());
+            nombresEmpleados.add(emp.getNombre() + " " + emp.getApellido());
         }
         return "Departamento {" + nombre + "/" + " empleados" + nombresEmpleados + "}";
     }

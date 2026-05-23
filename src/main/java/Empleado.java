@@ -16,15 +16,15 @@ public class Empleado implements Invitable{
     /** Nombre del empleado */
     private String nombre;
     /** Apellidos del empleado */
-    private String apellidos;
+    private String apellido;
     /** Correo electronico del empleado */
     private String correo;
     /** Departamento al que pertenece el empleado */
     private Departamento departamento;
 
-    public Empleado(String id, String apellidos, String nombre, String correo, Departamento departamento){
+    public Empleado(String id, String apellido, String nombre, String correo, Departamento departamento){
         this.id = id;
-        this.apellidos = apellidos;
+        this.apellido = apellido;
         this.nombre = nombre;
         this.correo = correo;
         this.departamento = departamento;
@@ -64,16 +64,16 @@ public class Empleado implements Invitable{
      * Recibe el Apellido del empleado.
      * @return String del/los apellidos.
      */
-    public String getApellidos(){
-        return apellidos;
+    public String getApellido(){
+        return apellido;
     }
 
     /**
      * Coloca/modifica los apellidos a un empleado.
-     * @param apellidos apellidos a asignar.
+     * @param apellido apellidos a asignar.
      */
-    public void setApellidos(String apellidos){
-        this.apellidos = apellidos;
+    public void setApellido(String apellido){
+        this.apellido = apellido;
     }
 
     /**
@@ -135,7 +135,7 @@ public class Empleado implements Invitable{
      */
     @Override
     public String toString(){
-        return "Empleado {" + "id= " + id + "/ " + " nombre completo= " + nombre + " " + apellidos + "/ " + "correo= " + correo + "/ " + "departamento" +
+        return "Empleado {" + "id= " + id + "/ " + " nombre completo= " + nombre + " " + apellido + "/ " + "correo= " + correo + "/ " + "departamento" +
                 (departamento!= null ? departamento.getNombre() : "ninguno");
     }
 
