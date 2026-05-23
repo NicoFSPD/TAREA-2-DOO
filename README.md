@@ -10,7 +10,7 @@ Integrantes:
 ## ACTUALIZACIONES AL DIAGRAMA UML INICIAL ##
 #############################################
 
-Clase Aistencia
+Clase Asistencia
 - Participante (Atributo)
   A diferencia del UML anterior, ahora con el uso de la interfaz invitable se puede
   invitar a un invitado, un departamento o a otra persona externa sin la necesidad
@@ -42,32 +42,32 @@ Clase Departamento
 
 ---------------------------------------
 
-Clase Invitación:
+Clase Invitacion
 
-	-Invitado (Atributo):
+-   Invitado (Atributo):
 
-		Es un atributo que se deduce y deriva de la explicita relación de realización 
-        con la interface "Invitable", de la cual también hay cosas adicionales. 
-        Es necesaria para lograr hacerle llegar una invitación a la reunión a un
-        empleado del cual es necesaria su presencia (Asistencia) en la reunion, y además 
-        para poder hacer un punto de inflexión entre los objetos que son solamente empleados, 
-        y los empleados con calidad de invitado para una reunion como tal.
+    Es un atributo que se deduce y deriva de la explicita relación de realización 
+    con la interface "Invitable", de la cual también hay cosas adicionales. 
+    Es necesaria para lograr hacerle llegar una invitación a la reunión a un
+    empleado del cual es necesaria su presencia (Asistencia) en la reunion, y además 
+    para poder hacer un punto de inflexión entre los objetos que son solamente empleados, 
+    y los empleados con calidad de invitado para una reunion como tal.
 
 ---------------------------------------
 
 Clase Nota:
 
-    - Autor (Atributo):
+- Autor (Atributo):
 
-		La nota va a poseer, además de solo un cuerpo, el Autor que la escribió y envió.
+    La nota va a poseer, además de solo un cuerpo, el Autor que la escribió y envió.
 
-	
-	- Fecha (Atributo):
-		
-		La fecha de creación y envío de la nota, como información adicional respecto de la nota como tal.
 
-	Esto induce implementaciones nuevas en la clase Reunión como el contenedor de todas las notas hechas 
-    durante la reunión 	(List<Nota> notas y el método agregarNota())
+- Fecha (Atributo):
+    
+    La fecha de creación y envío de la nota, como información adicional respecto de la nota como tal.
+
+Esto induce implementaciones nuevas en la clase Reunión como el contenedor de todas las notas hechas 
+durante la reunión 	(List<Nota> notas y el método agregarNota())
 
 
 
