@@ -108,7 +108,7 @@ Clase InvitadoExterno
   que lo usen. Tambien se implemento su getNombre() y GetApellido() que facilitan el manejo de los
   atributos.
 
-- Getters, Setters y Construictor:
+- Getters, Setters y Constructor:
   Constructor ayuda a setear los atributos de la clase, mientras que los getters y setters ayudan al
   trabajo externo de los atributos privados de la clase
 
