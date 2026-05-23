@@ -69,6 +69,52 @@ Clase Nota:
 Esto induce implementaciones nuevas en la clase Reunión como el contenedor de todas las notas hechas 
 durante la reunión 	(List<Nota> notas y el método agregarNota())
 
+- generarInforme (Metodo)
+  Automatiza la creacion del archivo de texto "InformedeReunion.txt", usando try-catch y lanzando una
+  exception en el caso de error.
+
+---------------------------------------------------------------
+Clase ReunionPresencial
+- Constructor:
+  recibe los parametros para setear la reunion y se los pasa directamente a la clase padre, además,
+  inicializando la sala.
+
+- Getters y Setters:
+  Ayudan a manejar el atributo "sala".
+
+- toString() (Metodo)
+  concatena la informacion de la reunion presencial.
+
+----------------------------------------------------------------
+Clase ReunionVirtual (analogo a ReunionPresencial)
+- Constructor:
+  recibe los parametros para setear la reunion y se los pasa directamente a la clase padre, además,
+  inicializando la sala.
+
+- Getters y Setters:
+  Ayudan a manejar el atributo "enlace".
+
+- toString() (Metodo)
+  concatena la informacion de la reunion virtual.
+
+----------------------------------------------------------------
+Clase InvitadoExterno
+- Clase completa nueva
+  Se agrego la clase completa para poder registrar y gestionar a las personas que no pertenezcan a
+  la empresa.
+
+- Interfaz
+  Con "Invitable", queda definido invitar(), el cual envia la confirmacion al correo de las personas
+  que lo usen. Tambien se implemento su getNombre() y GetApellido() que facilitan el manejo de los
+  atributos.
+
+- Getters, Setters y Construictor:
+  Constructor ayuda a setear los atributos de la clase, mientras que los getters y setters ayudan al
+  trabajo externo de los atributos privados de la clase
+
+- toString() (Metodo)
+  Genera una representacion de la informacion de la persona invitada.
+
 
 
 
