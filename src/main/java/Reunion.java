@@ -322,7 +322,7 @@ public abstract class Reunion implements Serializable {
      * @return Cada uno de los datos que luego serán necesarios para el armado del informe .txt*/
     @Override
     public String toString() {
-        return "\n\nReunion programada el " + fecha
+        return "Reunion programada el " + fecha
                 + "\nHora inicio: " + getFechaInicio().atZone(ZoneId.systemDefault()).toLocalTime()
                 + "\nHora de termino: " + getFechaFin().atZone(ZoneId.systemDefault()).toLocalTime()
                 + "\nDuracion total: " + calcularTiempoReal()
@@ -354,13 +354,13 @@ public abstract class Reunion implements Serializable {
      * Cosas tales como quien la organizó, fecha y hora en que se inició/termino, participantes, etc.
      *
      * @throws IOException en caso de haber un problema en lo que es el stream a tratar */
-    public void generarInforme() throws IOException{
-        FileOutputStream archivo = new FileOutputStream("InformedeReunion.txt");
-        ObjectOutputStream informe = new ObjectOutputStream(archivo);
-
-        informe.write((toString()+listadoNotas().toString()).getBytes());
-
-        informe.close();
-        archivo.close();
+    public void generarInforme() {
+        try {
+            FileWriter archivo = new FileWriter("InformedeReunion.txt");
+            archivo.write(toString() + listadoNotas());
+            archivo.close();
+        } catch (IOException e) {
+            System.out.println("Error al generar el informe: " + e.getMessage());
+        }
     }
 }
