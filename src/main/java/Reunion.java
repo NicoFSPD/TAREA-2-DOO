@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.List;
 /**
  * Clase abstracta que representa una Reunion
- * @author Daniel Lopez Ramirez
- * @author Nicolas Silva
+ * @author Daniel Cristobal Patricio Lopez Ramirez
+ * @author Nicolas Fernando Silva Paredes
  * @version 1.0 - 22 de mayo de 2026
  */
 public abstract class Reunion{

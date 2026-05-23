@@ -9,8 +9,8 @@ import java.util.Date;
  * padre Reunion y que incluye la logica para poder tener encuentros
  * fisicos con la asignacion de salas.
  * </p>
- * @author Eduardo Riveros Medina
- * @version 1.0
+ * @author Eduardo Alexander Riveros Medina
+ * @version 1.0 - 23 de mayo de 2026
  */
 public class ReunionPresencial extends Reunion{
     /** El nombre de la sala donde se hará la reunión. */
@@ -47,7 +47,6 @@ public class ReunionPresencial extends Reunion{
         this.sala = sala;
     }
 
-    //descripcion de la reunion
     /**
      * Genera una descripción de la reunión presencial.
      * <p>

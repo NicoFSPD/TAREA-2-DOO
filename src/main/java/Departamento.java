@@ -6,11 +6,12 @@ import java.util.List;
  * <p>
  * Clase que agrupa a un conjunto de empleados.
  * Al implementar la interfaz "Invitable", se puede invitar a todos los empleados
- * de un departamento de forma masivas, propagando la invitación
+ * de un departamento de forma masivas, propagando la invitacion
  * automáticamente a cada uno de los trabajadores registrados.
  * </p>
- * @author Eduardo Riveros Medina
- * @version 1.0
+ * @author Eduardo Alexander Riveros Medina
+ * @author Nicolas Fernando Silva Paredes
+ * @version 1.0 - 23 de mayo de 2026
  */
 public class Departamento implements Invitable {
 
@@ -18,12 +19,12 @@ public class Departamento implements Invitable {
     private String nombre;
 
     /** Lista que almacena los empleados pertenecientes al departamento */
-    private List<Empleado> empleados;   //lista de los empleados que debeerian pertenecer al departamento en cuestion
+    private List<Empleado> empleados;
 
     /**
      * Constructor que inicializa el departamento con su nombre
      * y genera una estructura vacía para su lista de empleados.
-     * @param nombre El nombre que se le asignará al departamento en cuestion.
+     * @param nombre El nombre que se le asignara al departamento en cuestion.
      */
     public Departamento(String nombre){
         this.nombre= nombre;
@@ -33,7 +34,7 @@ public class Departamento implements Invitable {
     /**
      * Registra un nuevo empleado en el departamento corresṕondiente.
      * <p>
-     * meetodo que asegura que el objeto no sea nulo y que no se encuentre
+     * metodo que asegura que el objeto no sea nulo y que no se encuentre
      * ya registrado previamente dentro de la lista para evitar empleados duplicados.
      * </p>
      * @param empleado Objeto "Empleado" que se desea integrar al departamento en cuestion.
@@ -45,7 +46,7 @@ public class Departamento implements Invitable {
     }
 
     /**
-     * Calcula y devuelve el número total de trabajadores que pertenecen actualmente
+     * Calcula y devuelve el numero total de trabajadores que pertenecen actualmente
      * al departamento usando el tamaño de la lista.
      * @return Cantidad de empleados en la lista.
      */
@@ -54,22 +55,20 @@ public class Departamento implements Invitable {
     }
 
     /**
-     * Invitacion a todo el departamento a una reunión.
+     * Invitacion a todo el departamento a una reunion.
      * <p>
-     * Con la  interfaz "Invitable", notifica la acción de invitar al departamento
+     * Con la interfaz "Invitable", notifica la acción de invitar al departamento
      * generalmente por consola, uno por uno de forma secuencial el metodo {@code invitar()}
-     * individual de cada uno de los empleados adscritos a este departamento.
+     * individual de cada uno de los empleados adscritos a este departamento
      * </p>
      */
     @Override
     public void invitar(){
         System.out.println("Invitacion a todos los empleados del departamento " + nombre + " enviada");
         for(Empleado emp: empleados){
-            emp.invitar();      //el ciclo invita a todos los de la lista del departamento
+            emp.invitar();
         }
     }
-
-    //--SETTERS Y GETTERS--
 
     /**
      * Recibe el nombre del departamento.

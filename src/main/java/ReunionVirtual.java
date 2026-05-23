@@ -1,7 +1,6 @@
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
-
 /**
  * Representacion de una reunión virtual.
  * <p>
@@ -9,8 +8,8 @@ import java.util.Date;
  * padre Reunion y que incluye la logica para poder tener encuentros
  * virtuales con la asignacion de enlaces.
  * </p>
- * @author Eduardo Riveros Medina
- * @version 1.0
+ * @author Eduardo Alexander Riveros Medina
+ * @version 1.0 - 23 de mayo de 2026
  */
 public class ReunionVirtual extends Reunion{
 
@@ -31,7 +30,6 @@ public class ReunionVirtual extends Reunion{
         this.enlace = enlace;
     }
 
-    //getter/setter enlace
     /**
      * Recibe el identificador (link/url/otro) del enlace asignado a la reunion.
      * @return String con el enlace de la reunion.
@@ -48,7 +46,6 @@ public class ReunionVirtual extends Reunion{
         this.enlace = enlace;
     }
 
-    //descripcion de la reunion
     /**
      * Genera una descripción de la reunión virtual.
      * <p>

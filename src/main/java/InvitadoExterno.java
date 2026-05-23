@@ -6,7 +6,7 @@
  * Al implementar la interfaz "Invitable", queda disponible para ser invitado
  * y poder asistir a las reuniones utilizando el polimorfismo.
  * </p>
- * @author Eduardo Riveros Medina
+ * @author Eduardo Alexander Riveros Medina
  * @version 1.0
  */
 public class InvitadoExterno implements Invitable {

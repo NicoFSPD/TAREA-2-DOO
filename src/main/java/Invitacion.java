@@ -1,7 +1,7 @@
 import java.time.Instant;
 /**Clase para las invitaciones
- * @author Nicolás Silva
- * @author Daniel Lopez Ramirez
+ * @author Nicolas Fernando Silva Paredes
+ * @author Daniel Cristobal Patricio Lopez Ramirez
  * @version 1.0, 20 de mayo de 2026
  * */
 public class Invitacion {
@@ -15,19 +15,36 @@ public class Invitacion {
         this.hora = hora;
         this.invitado = invitado;
     }
-    //GETTER/SETTER PARA LA HORA
 
+
+    /**
+     * Getter hora
+     * @return hora
+     */
     public Instant getHora() {
         return hora;
     }
+
+    /**
+     * Setter hora
+     * @param hora
+     */
     public void setHora(Instant hora) {
         this.hora = hora;
     }
 
-    //GETTER/SETTER DE INVITADO
+    /**
+     * Getter invitado
+     * @return invitado
+     */
     public Invitable getInvitado() {
         return invitado;
     }
+
+    /**
+     * Setter invitado
+     * @param invitado
+     */
     public void setInvitado(Invitable invitado) {
         this.invitado = invitado;
     }

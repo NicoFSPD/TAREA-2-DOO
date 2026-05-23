@@ -1,4 +1,3 @@
-
 /**
  * Representa a un empleado dentro de la organización.
  * <p>
@@ -7,8 +6,8 @@
  * interfaz "Invitable",al empleado queda disponible para ser invitado
  * y poder asistir a las reuniones.
  * </p>
- * * @author Eduardo Riveros Medina
- * @version 1.0
+ * @author Eduardo Alexander Riveros Medina
+ * @version 1.0 - 23 de mayo de 2026
  */
 public class Empleado implements Invitable{
     /** Identificador personal de cada empleado */
@@ -22,6 +21,14 @@ public class Empleado implements Invitable{
     /** Departamento al que pertenece el empleado */
     private Departamento departamento;
 
+    /**
+     * Contructor clase empleado
+     * @param id
+     * @param apellido
+     * @param nombre
+     * @param correo
+     * @param departamento
+     */
     public Empleado(String id, String apellido, String nombre, String correo, Departamento departamento){
         this.id = id;
         this.apellido = apellido;
@@ -33,7 +40,7 @@ public class Empleado implements Invitable{
     /**
      * Invitacion del empleado a una reunion
      * <p>
-     * metodo que implemeta a "Invitable", imprime la confirmacion
+     * Metodo que implemeta a "Invitable", imprime la confirmacion
      * de la invitacion y "envia una notificacion al correo".
      * <p>
      */

@@ -8,24 +8,34 @@ public class Nota {
     private Asistencia autor;
     private Instant hora;
     private String contenido;
-/**Constructor de la clase
- * @param autor Autor de la nota
- * @param hora Hora de publicación
- * @param contenido Cuerpo de la nota*/
+    /**Constructor de la clase
+     * @param autor Autor de la nota
+     * @param hora Hora de publicación
+     * @param contenido Cuerpo de la nota*/
     public Nota(Asistencia autor, Instant hora, String contenido) {
         this.autor = autor;
         this.hora = hora;
         this.contenido = contenido;
     }
-// GETTERS DE CADA VARIABLE
+
+    /**
+     * Getters de cada variable
+     * @return autor
+     */
     public Asistencia getAutor() {
         return autor;
     }
 
+    /**
+     * @return hora
+     */
     public Instant getHora() {
         return hora;
     }
 
+    /**
+     * @return contenido
+     */
     public String getContenido() {
         return contenido;
     }

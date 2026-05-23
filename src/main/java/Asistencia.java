@@ -1,24 +1,23 @@
-
 /**
  * Registro de asistencia de un participante a una reunión.
  * <p>
  * Con el uso de la interfaz "Invitable" es posible que el sistema de
- * asistencia sea flexible y polimórfico, siendo así capaz de registrar
- * tanto a empleados individuales como a departamentos completos.
+ * asistencia sea flexible y polimorfico, siendo asi capaz de registrar
+ * tanto a empleados individuales como a departamentos completos
  * </p>
- * *@author Eduardo Riveros Medina
- * @version 1.0
+ * @author Eduardo Alexander Riveros Medina
+ * @version 1.0 - 23 de mayo de 2026
  */
 public class Asistencia{
 
-    /** * El participante asociado al registro de asistencia.
+    /**El participante asociado al registro de asistencia.
      * Mantenido bajo la abstracción de la interfaz Invitable (Extra en el UML).
      */
     private Invitable participante;         //asosiacion dirigida hacia Empleado en el UML, AGREGADO EXTRA
 
     /**
      * Constructor para inicializar el registro de asistencia con su participante.
-     * @param participante Empleado invitable que asiste a la reunión.
+     * @param participante Empleado invitable que asiste a la reunion.
      */
     public Asistencia(Invitable participante){     //constructor
         this.participante = participante;
@@ -27,10 +26,10 @@ public class Asistencia{
     /**
      * Recibe el participante registrado en esta asistencia.
      * <p>
-     * Este getter es un agregado extra no explícito en el UML original
-     * se incorporó para permitir la lectura segura del participante.
+     * Este getter es un agregado extra no explicito en el UML original
+     * se incorporo para permitir la lectura segura del participante.
      * </p>
-     * @return El objeto {@link Invitable} asociado.
+     * @return {@link Invitable}
      */
     public Invitable getParticipante(){        //getter, AGREGADO EXTRA
         return participante;
@@ -52,9 +51,9 @@ public class Asistencia{
      * Genera una representación con los datos de la asistencia.
      * <p>
      * Solicita el metodo "toString()" del participante en cuestion
-     * si este se encuentra inicializado (así evita errores de null).
+     * si este se encuentra inicializado (asi evita errores de null).
      * </p>
-     * @return String con la información del registro.
+     * @return String con la informacion del registro.
      */
     @Override
     public String toString() {      //toString que se pide por enunciado
@@ -65,5 +64,3 @@ public class Asistencia{
 }
 
 
-//todo lo que tenga un "AGREGADO EXTRA" hay que especificalo dpues en el UML
-//esta clase está hecha solo para q se pueda tener conocimiento de los q fueron o no fueron a la reunion

@@ -6,8 +6,15 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Clase creada para hacer los test unitarios para posibles correcciones en las clases de este trabajo
+ * @author Daniel Cristobal Patricio Lopez Ramirez
+ * @version 1.0 - 23 de mayo de 2026
+ */
 class ReunionTest {
+    /**
+     * Creacion de clases para su uso en los test unitarios
+     */
     private Reunion reunion;
     private Departamento departamento;
     private Empleado organizador;
@@ -37,6 +44,9 @@ class ReunionTest {
         );
     }
 
+    /**
+     * Realizacion de test unitarios
+     */
     @Test
     void obtenerAusencias() {
         assertTrue(reunion.obtenerAusencias().isEmpty());
