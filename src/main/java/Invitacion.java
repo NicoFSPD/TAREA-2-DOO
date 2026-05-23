@@ -1,7 +1,7 @@
 import java.time.Instant;
 /**Clase para las invitaciones
  * @author Nicolás Silva
- * @author Daniel Ramirez
+ * @author Daniel Lopez Ramirez
  * @version 1.0, 20 de mayo de 2026
  * */
 public class Invitacion {
