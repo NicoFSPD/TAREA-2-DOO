@@ -80,7 +80,7 @@ public class Departamento implements Invitable {
     }
 
     @Override
-    public String getApellidos() {
+    public String getApellido() {
         return "";
     }
 

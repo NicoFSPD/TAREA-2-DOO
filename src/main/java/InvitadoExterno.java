@@ -15,7 +15,7 @@ public class InvitadoExterno implements Invitable {
         System.out.println("Invitacion enviada a " + correo);
     }
 
-    public String getApellidos() {
+    public String getApellido() {
         return apellido;
     }
 

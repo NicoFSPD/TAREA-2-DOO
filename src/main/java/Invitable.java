@@ -8,5 +8,5 @@ public interface Invitable {
 
     //funcionalidad para obtener nombre/apellido de cada participante
     public String getNombre();
-    public String getApellidos();
+    public String getApellido();
 }

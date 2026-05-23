@@ -298,7 +298,7 @@ public abstract class Reunion implements Serializable {
     public String TotaldeParticipantes(){
         String Total = "\t";
         for(Asistencia a : getAsistencias()){
-            Total += "- "+a.getParticipante().getNombre().toString()+" "+ a.getParticipante().getApellidos().toString() +"\n\t";
+            Total += "- "+a.getParticipante().getNombre().toString()+" "+ a.getParticipante().getApellido().toString() +"\n\t";
         }
         return Total;
     }
@@ -313,7 +313,7 @@ public abstract class Reunion implements Serializable {
             return Total;
         }
         for(Retraso r : obtenerRetrasos()){
-            Total += "- "+r.getParticipante().getNombre()+" "+r.getParticipante().getApellidos()+"\n\t";
+            Total += "- "+r.getParticipante().getNombre()+" "+r.getParticipante().getApellido()+"\n\t";
         }
         return Total;
     }
@@ -326,7 +326,7 @@ public abstract class Reunion implements Serializable {
                 + "\nHora inicio: " + getFechaInicio().atZone(ZoneId.systemDefault()).toLocalTime()
                 + "\nHora de termino: " + getFechaFin().atZone(ZoneId.systemDefault()).toLocalTime()
                 + "\nDuracion total: " + calcularTiempoReal()
-                + "\nOrganizador: " + organizador.getNombre() + " " + organizador.getApellidos()
+                + "\nOrganizador: " + organizador.getNombre() + " " + organizador.getApellido()
                 + "\nParticipantes:\n" + TotaldeParticipantes()
                 + "\nRetrasos:\n" + TotaldeRetrasos()
                 + "\nModalidad: ";
@@ -342,7 +342,7 @@ public abstract class Reunion implements Serializable {
             for(Nota n : notas){
                 listado += "Autor: "
                         + n.getAutor().getParticipante().getNombre().toString()
-                        + " " + n.getAutor().getParticipante().getApellidos() +  "\n"
+                        + " " + n.getAutor().getParticipante().getApellido() +  "\n"
                         + "Fecha de publicación: " + n.getHora().toString() + "\n\n"
                         + "\t" + n.getContenido().toString()
                         + "\n\n######################################################\n\n\n";
